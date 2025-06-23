@@ -348,7 +348,12 @@ We turn ideas into action, transforming lives and creating brighter futures.</p>
     <button type="submit" class="cta-button">Register</button>
   </form>
 </section>
-    <section id="admin"><h2>Admin Panel</h2><div id="admin-content">Loading...</div></section>
+    <section id="admin">
+  <h2>Admin Panel</h2>
+  <p>Click a section to start editing its content directly.</p>
+  <div id="admin-content">Loading...</div>
+</section>
+
   <section id="donate">
   <h2>Donate to Support Our Students</h2>
   <form id="donation-form">
@@ -397,6 +402,60 @@ We turn ideas into action, transforming lives and creating brighter futures.</p>
     showSection('jobs');
   });
 
+const editableSections = ['home', 'about', 'jobs', 'post-job', 'scholarships', 'donate', 'contact', 'login', 'register'];
+
+
+function enableAdminEditing() {
+  fetch('/session-status')
+    .then(res => res.json())
+    .then(data => {
+      if (data.loggedIn && data.role === 'admin') {
+        editableSections.forEach(id => {
+          const section = document.getElementById(id);
+          if (section) {
+            const saveBtn = document.createElement('button');
+            saveBtn.textContent = '💾 Save Changes';
+            saveBtn.className = 'cta-button';
+            saveBtn.style.margin = '10px 0';
+            saveBtn.onclick = () => saveSectionContent(id);
+            section.contentEditable = true;
+            section.style.border = '2px dashed #ccc';
+            section.style.padding = '15px';
+            section.insertAdjacentElement('beforebegin', saveBtn);
+          }
+        });
+      }
+    });
+}
+
+// Автоматски вчитување содржина од backend за секоја editable секција
+function loadSectionContent() {
+  editableSections.forEach(id => {
+    fetch(`/admin/section/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        const section = document.getElementById(id);
+        if (section && data.content) {
+          section.innerHTML = data.content;
+        }
+      });
+  });
+}
+
+
+function saveSectionContent(sectionId) {
+  const content = document.getElementById(sectionId).innerHTML;
+  fetch('/admin/save-section', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sectionId, content })
+  })
+    .then(res => res.text())
+    .then(msg => alert(msg))
+    .catch(err => alert('Error saving content: ' + err));
+}
+
+
   function renderJobs() {
     const jobListings = document.getElementById('jobs');
     if (!jobListings) return;
@@ -411,19 +470,9 @@ We turn ideas into action, transforming lives and creating brighter futures.</p>
     document.getElementById('jobs').appendChild(container);
   }
 
-  const editableSections = ['home', 'about', 'jobs', 'post-job', 'scholarships', 'donate', 'contact', 'login', 'register'];
+  
 
-  function enableAdminEditing() {
-    editableSections.forEach(id => {
-      const section = document.getElementById(id);
-      if (section) {
-        section.contentEditable = true;
-        section.style.border = '2px dashed #ccc';
-        section.style.padding = '15px';
-        section.insertAdjacentHTML('beforeend', '<p style="color: red;">[Editable by Admin]</p>');
-      }
-    });
-  }
+  
 
  let currentSection = document.querySelector('main section.active');
 
@@ -457,17 +506,19 @@ function showSection(id) {
 
 
 fetch('/session-status')
-    .then(res => res.json())
-    .then(data => {
-      if (data.loggedIn) {
-        document.getElementById('admin-nav').style.display = 'inline-block';
-      } else {
-        document.getElementById('admin-nav').style.display = 'none';
-        // Optional: hide the section too
-        const adminSection = document.getElementById('admin');
-        if (adminSection) adminSection.remove();
-      }
-    });
+  .then(res => res.json())
+  .then(data => {
+    if (data.loggedIn && data.role === 'admin') {
+      document.getElementById('admin-nav').style.display = 'inline-block';
+      enableAdminEditing(); // Овозможи уредување откако ќе се знае дека е логнат админ
+    } else {
+      document.getElementById('admin-nav').style.display = 'none';
+      const adminSection = document.getElementById('admin');
+      if (adminSection) adminSection.remove();
+    }
+  });
+loadSectionContent(); // вчитува содржина од базата
+
 </script>
 </body>
 </html>
