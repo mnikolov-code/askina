@@ -82,5 +82,8 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
   });
 });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.listen(8080, () => console.log('Server running at http://localhost:8080'));
