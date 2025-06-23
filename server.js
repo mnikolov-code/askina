@@ -42,6 +42,24 @@ app.post('/register', async (req, res) => {
   res.redirect('/');
 });
 
+const SectionContent = mongoose.model('SectionContent', { sectionId: String, content: String });
+
+app.post('/admin/save-section', async (req, res) => {
+  if (!req.session.user || req.session.role !== 'admin') return res.status(401).send('Unauthorized');
+  const { sectionId, content } = req.body;
+  await SectionContent.findOneAndUpdate(
+    { sectionId },
+    { content },
+    { upsert: true, new: true }
+  );
+  res.send('Section content saved!');
+});
+
+app.get('/admin/section/:id', async (req, res) => {
+  const section = await SectionContent.findOne({ sectionId: req.params.id });
+  res.json({ content: section?.content || '' });
+});
+
 app.post('/api/apply', async (req, res) => {
   await Application.create(req.body);
   res.send('Submitted!');
@@ -55,6 +73,14 @@ app.get('/admin/applications', async (req, res) => {
   if (!req.session.user || req.session.role !== 'admin') return res.status(401).send('Unauthorized');
   const apps = await Application.find({});
   res.json(apps);
+});
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).send('Logout failed');
+    }
+    res.redirect('/');
+  });
 });
 
 app.listen(8080, () => console.log('Server running at http://localhost:8080'));
