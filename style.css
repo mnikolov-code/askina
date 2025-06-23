@@ -1,0 +1,10 @@
+
+body { font-family: 'Segoe UI', sans-serif; background: #f9f9f9; color: #333; margin: 0; padding: 0; }
+header { background: #dc4d20; color: white; padding: 20px; text-align: center; }
+nav a { color: white; margin: 0 12px; text-decoration: none; font-weight: bold; cursor: pointer; }
+nav a:hover { opacity: 0.8; }
+main { max-width: 900px; margin: 40px auto; }
+section { display: none; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+section.active { display: block; }
+.cta-button { background: #dc4d20; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+.header-logo { display: flex; align-items: center; justify-content: center; gap: 15px; }

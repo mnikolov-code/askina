@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ASKINA NGO Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #b02a37;
+      --secondary: #fff4f4;
+      --accent: #e85a4f;
+      --text-dark: #2c2c2c;
+      --text-light: #fff;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--secondary);
+      color: var(--text-dark);
+    }
+    header {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: 20px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      margin: auto;
+    }
+    .header-logo { display: flex; align-items: center; }
+    .logo-img { width: 60px; margin-right: 10px; }
+    .logo-text h1 { margin: 0; font-size: 24px; }
+    .tagline { margin: 0; font-size: 14px; color: #fdd; }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding-left: 0;
+    }
+    .main-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .main-nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    main { width: 90%; margin: 30px auto; }
+    section {
+      display: none;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    section.active { display: block; }
+    .hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - 120px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #fff4f4, #ffe5e5);
+  border-radius: 10px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+
+    .hero-content { max-width: 60%; }
+    .hero-content h1 { font-size: 2.5em; margin-bottom: 10px; color: var(--primary); }
+    .hero-text { font-size: 1.1em; color: #444; }
+    .hero-image img {
+  width: 400px;
+  max-width: 100%;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+    .hero-cta {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .cta-btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: var(--primary);
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .cta-btn.secondary {
+      background-color: #ffe5e5;
+      color: var(--primary);
+    }
+    .cta-btn:hover { background-color: #a02833; }
+    .cta-btn.secondary:hover { background-color: #fdd; }
+    h2 { color: var(--primary); margin-bottom: 10px; }
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .submit-btn, .cta-button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover, .cta-button:hover {
+      background-color: #d7493f;
+    }
+    .job-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    .job-card {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    @media screen and (max-width: 768px) {
+  
+  .hero-content, .hero-image {
+    max-width: 100%;
+  }
+}
+
+
+	
+	section.fade {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  display: block !important;
+}
+
+section.active.fade {
+  opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="logo.png" alt="ASKINA Logo" class="logo-img">
+        <div class="logo-text">
+          <h1>ASKINA Foundation</h1>
+          <p class="tagline">Empowering Youth Through Opportunities</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a onclick="showSection('home')">Home</a></li>
+          <li><a onclick="showSection('about')">About</a></li>
+          <li><a onclick="showSection('jobs')">Job Board</a></li>
+          <li><a onclick="showSection('post-job')">Post a Job</a></li>
+          <li><a onclick="showSection('scholarships')">Scholarships</a></li>
+          <li><a onclick="showSection('donate')">Donate</a></li>
+          <li><a onclick="showSection('contact')">Contact</a></li>
+          <li><a onclick="showSection('login')">Login</a></li>
+          <li><a onclick="showSection('register')">Register</a></li>
+          <li id="admin-nav" style="display: none;"><a onclick="showSection('admin')" id="admin-link">Admin</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero-section active">
+
+  <div class="hero-content">
+    <h1>Creating Opportunities for Youth</h1>
+    <p class="hero-text">
+      ASKINA Foundation connects underprivileged students with job opportunities, scholarships, and safe housing through partnerships with local businesses and organizations.
+    </p>
+    <div class="hero-cta">
+      <button onclick="showSection('jobs')" class="cta-btn">Find Jobs</button>
+      <button onclick="showSection('donate')" class="cta-btn secondary">Support Us</button>
+    </div>
+	<BR>
+	<div class="hero-image">
+    <img src="https://www.graduateprogram.org/wp-content/uploads/2025/03/Mar-5-Should-Students-Have-Homework_web-1024x683.jpg" alt="Students learning and working">
+  </div>
+  </div>
+</section>
+
+
+    <section id="about"><h2>About Us</h2><p>At ASKINA Foundation, we believe every child deserves a chance—regardless of their background. Our mission is rooted in compassion, equity, and the unwavering belief that opportunity should never be a privilege, but a right.
+
+We are dedicated to supporting children and young people from socially vulnerable families by opening doors they never thought possible. Through our growing network of partners—employers, educators, and housing organizations—we help them find stable job opportunities, secure scholarships, enroll in universities, and access safe and affordable student housing.
+
+For many of these children, we are not just a stepping stone, but a lifeline. We stand by them from their first job interview to their first day at university—ensuring that their dreams don’t fade because of circumstances beyond their control.
+
+This is not charity. This is justice. And we are committed to making it real, one young life at a time.<BR>ASKINA collaborates with dispatch companies to empower youth through opportunities.</p></section>
+    <section id="jobs"><h2>Job Board</h2><div class="job-card">Jobs loading...</div></section>
+    <section id="post-job">
+  <h2>Post a Job Opportunity</h2>
+  <form id="job-post-form">
+    <label for="job-title">Job Title*</label>
+    <input type="text" id="job-title" name="job-title" required>
+
+    <label for="job-company">Company Name*</label>
+    <input type="text" id="job-company" name="job-company" required>
+
+    <label for="job-type">Job Type*</label>
+    <select id="job-type" name="job-type" required>
+      <option value="">Select type</option>
+      <option value="full-time">Full-time</option>
+      <option value="part-time">Part-time</option>
+      <option value="internship">Internship</option>
+    </select>
+
+    <label for="job-location">Location*</label>
+    <input type="text" id="job-location" name="job-location" required>
+
+    <label for="job-description">Job Description*</label>
+    <textarea id="job-description" name="job-description" required></textarea>
+
+    <label for="job-contact">Contact Email*</label>
+    <input type="email" id="job-contact" name="job-contact" required>
+
+    <button type="submit" class="submit-btn">Submit Job</button>
+  </form>
+</section>
+<section id="scholarships">
+  <h2>Scholarships</h2>
+  <p>
+    Education should never be a luxury—it should be a promise. At <strong>ASKINA Foundation</strong>, we are turning that promise into reality for young people who need it the most.
+  </p>
+  <p>
+    Our scholarship program is designed to uplift students from socially vulnerable backgrounds by removing the financial barriers that stand between them and their dreams. Whether it's tuition fees, books, application costs, or transportation—our support goes beyond just financial aid. We invest in the full journey of each student.
+  </p>
+  <p>
+    We work closely with universities, donors, and local communities to identify young talents with strong potential and limited means. Through our scholarships, these students are not just given an opportunity to study—they are given hope, dignity, and a future they can shape on their own terms.
+  </p>
+  <p>
+    Every scholarship we award is a commitment—to stand beside these students, encourage their growth, and help them break the cycle of poverty through education.
+  </p>
+  <p>
+    <em>Because we believe that a single degree can lift an entire family—and change the course of a community.</em>
+  </p>
+</section>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>
+    Whether you’re a student seeking support, a company willing to offer opportunities, a donor ready to make a difference, or just someone with a kind heart and an idea—your voice matters.
+  </p>
+  <p>
+    At <strong>ASKINA Foundation</strong>, we believe in the power of connection. Reach out to us with your questions, suggestions, collaborations, or simply to say hello. Together, we can build stronger bridges for those who need them most.
+  </p>
+
+  <form id="contact-form">
+    <label for="contact-name">Full Name*</label>
+    <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+
+    <label for="contact-email">Email Address*</label>
+    <input type="email" id="contact-email" name="email" placeholder="Your email" required>
+
+    <label for="contact-subject">Subject*</label>
+    <input type="text" id="contact-subject" name="subject" placeholder="Subject of your message" required>
+
+    <label for="contact-message">Message*</label>
+    <textarea id="contact-message" name="message" placeholder="Write your message here..." required></textarea>
+
+    <button type="submit" class="submit-btn">Send Message</button>
+  </form>
+
+  <p style="margin-top: 20px;">
+    📍 Skopje, North Macedonia<br />
+    ✉️ Email: <a href="mailto:info@askina.org" style="color: var(--primary); text-decoration: underline;">info@askina.org</a><br />
+    ☎️ Phone: +389 70 123 456
+  </p>
+</section>
+
+<!-- Updated login section -->
+<section id="login">
+  <h2>Login</h2>
+  <form method="POST" action="/login">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit" class="cta-button">Login</button>
+  </form>
+</section>
+
+<!-- Updated register section -->
+<section id="register">
+  <h2>Register</h2>
+  <form method="POST" action="/register">
+    <label for="reg-username">Username</label>
+    <input type="text" id="reg-username" name="username" required>
+
+    <label for="reg-password">Password</label>
+    <input type="password" id="reg-password" name="password" required>
+
+    <label for="reg-email">Email</label>
+    <input type="email" id="reg-email" name="email" required>
+
+    <button type="submit" class="cta-button">Register</button>
+  </form>
+</section>
+    <section id="admin"><h2>Admin Panel</h2><div id="admin-content">Loading...</div></section>
+  <section id="donate">
+  <h2>Donate to Support Our Students</h2>
+  <form id="donation-form">
+    <label for="donation-amount">Donation Amount (€)</label>
+    <input type="number" id="donation-amount" name="amount" min="1" placeholder="Enter amount" required>
+
+    <label for="donor-name">Full Name</label>
+    <input type="text" id="donor-name" name="name" placeholder="Your full name" required>
+
+    <label for="donor-email">Email Address</label>
+    <input type="email" id="donor-email" name="email" placeholder="Your email" required>
+
+    <label for="donation-message">Message (optional)</label>
+    <textarea id="donation-message" name="message" placeholder="Write a message..."></textarea>
+
+    <button type="submit" class="submit-btn">Donate</button>
+  </form>
+</section>
+  </main>
+<footer style="text-align:center; padding: 20px; background-color: var(--primary); color: white;">
+  &copy; 2025 ASKINA Foundation. All rights reserved.
+</footer>
+
+
+<script>
+  const jobs = [];
+
+  document.getElementById('job-post-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const job = {
+      title: this['job-title'].value,
+      company: this['job-company'].value,
+      type: this['job-type'].value,
+      location: this['job-location'].value,
+      description: this['job-description'].value,
+      contact: this['job-contact'].value
+    };
+    jobs.push(job);
+    alert('Job posted successfully!');
+    this.reset();
+    renderJobs();
+    showSection('jobs');
+  });
+
+  function renderJobs() {
+    const jobListings = document.getElementById('jobs');
+    if (!jobListings) return;
+    const container = document.createElement('div');
+    jobs.forEach(job => {
+      const card = document.createElement('div');
+      card.className = 'job-card';
+      card.innerHTML = `<h3>${job.title}</h3><p><strong>${job.company}</strong> - ${job.type} - ${job.location}</p><p>${job.description}</p><p>Contact: ${job.contact}</p>`;
+      container.appendChild(card);
+    });
+    document.getElementById('jobs').innerHTML = '<h2>Job Board</h2>';
+    document.getElementById('jobs').appendChild(container);
+  }
+
+  const editableSections = ['home', 'about', 'jobs', 'post-job', 'scholarships', 'donate', 'contact', 'login', 'register'];
+
+  function enableAdminEditing() {
+    editableSections.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) {
+        section.contentEditable = true;
+        section.style.border = '2px dashed #ccc';
+        section.style.padding = '15px';
+        section.insertAdjacentHTML('beforeend', '<p style="color: red;">[Editable by Admin]</p>');
+      }
+    });
+  }
+
+ let currentSection = document.querySelector('main section.active');
+
+function showSection(id) {
+  const newSection = document.getElementById(id);
+  if (!newSection || newSection === currentSection) return;
+
+  // Fade out current
+  if (currentSection) {
+    currentSection.classList.remove('active');
+    currentSection.classList.add('fade');
+    setTimeout(() => {
+      currentSection.style.display = 'none';
+      currentSection.classList.remove('fade');
+
+      // Fade in new
+      newSection.style.display = 'block';
+      newSection.classList.add('fade');
+      setTimeout(() => {
+        newSection.classList.add('active');
+        currentSection = newSection;
+      }, 20); // Delay to trigger fade-in
+    }, 300); // Duration matches CSS transition
+  } else {
+    // First load
+    newSection.style.display = 'block';
+    newSection.classList.add('fade', 'active');
+    currentSection = newSection;
+  }
+}
+
+
+fetch('/session-status')
+    .then(res => res.json())
+    .then(data => {
+      if (data.loggedIn) {
+        document.getElementById('admin-nav').style.display = 'inline-block';
+      } else {
+        document.getElementById('admin-nav').style.display = 'none';
+        // Optional: hide the section too
+        const adminSection = document.getElementById('admin');
+        if (adminSection) adminSection.remove();
+      }
+    });
+</script>
+</body>
+</html>
