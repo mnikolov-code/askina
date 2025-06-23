@@ -193,8 +193,8 @@ section.active.fade {
           <li><a onclick="showSection('contact')">Contact</a></li>
           <li><a onclick="showSection('login')">Login</a></li>
           <li><a onclick="showSection('register')">Register</a></li>
-          <li id="admin-nav" style="display: none;"><a onclick="showSection('admin')" id="admin-link">Admin</a></li>
-
+          <li id="admin-nav" style="display: none;"><a onclick="showSection('admin')" id="admin-link">Admin</a></li><BR>
+<li id="logout-nav" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
         </ul>
       </nav>
     </div>
@@ -382,6 +382,7 @@ We turn ideas into action, transforming lives and creating brighter futures.</p>
 </footer>
 
 
+
 <script>
   const jobs = [];
 
@@ -406,26 +407,43 @@ const editableSections = ['home', 'about', 'jobs', 'post-job', 'scholarships', '
 
 
 function enableAdminEditing() {
-  fetch('/session-status')
-    .then(res => res.json())
-    .then(data => {
-      if (data.loggedIn && data.role === 'admin') {
-        editableSections.forEach(id => {
-          const section = document.getElementById(id);
-          if (section) {
-            const saveBtn = document.createElement('button');
-            saveBtn.textContent = '💾 Save Changes';
-            saveBtn.className = 'cta-button';
-            saveBtn.style.margin = '10px 0';
-            saveBtn.onclick = () => saveSectionContent(id);
-            section.contentEditable = true;
-            section.style.border = '2px dashed #ccc';
-            section.style.padding = '15px';
-            section.insertAdjacentElement('beforebegin', saveBtn);
-          }
-        });
-      }
-    });
+  const main = document.querySelector('main');
+
+  editableSections.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.contentEditable = true;
+      section.style.border = '2px dashed #ccc';
+      section.style.padding = '15px';
+    }
+  });
+
+  // Додај само едно глобално Save копче ако веќе не постои
+  if (!document.getElementById('global-save-btn')) {
+    const saveAllBtn = document.createElement('button');
+    saveAllBtn.id = 'global-save-btn';
+    saveAllBtn.textContent = '💾 Save All Changes';
+    saveAllBtn.className = 'cta-button';
+    saveAllBtn.style.margin = '20px auto';
+    saveAllBtn.style.display = 'block';
+    saveAllBtn.onclick = saveAllSections;
+
+    main.appendChild(saveAllBtn);
+  }
+}
+function saveAllSections() {
+  editableSections.forEach(sectionId => {
+    const content = document.getElementById(sectionId).innerHTML;
+    fetch('/admin/save-section', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sectionId, content })
+    })
+    .then(res => res.text())
+    .then(msg => console.log(`Saved ${sectionId}: ${msg}`))
+    .catch(err => console.error(`Error saving ${sectionId}:`, err));
+  });
+  alert("All changes saved!");
 }
 
 // Автоматски вчитување содржина од backend за секоја editable секција
@@ -503,21 +521,24 @@ function showSection(id) {
     currentSection = newSection;
   }
 }
+ function logout() {
+    fetch('/logout')
+      .then(() => {
+        alert('Logged out successfully.');
+        window.location.reload(); // reload за да се тргне admin мод
+      });
+  }
 
-
-fetch('/session-status')
-  .then(res => res.json())
-  .then(data => {
-    if (data.loggedIn && data.role === 'admin') {
-      document.getElementById('admin-nav').style.display = 'inline-block';
-      enableAdminEditing(); // Овозможи уредување откако ќе се знае дека е логнат админ
-    } else {
-      document.getElementById('admin-nav').style.display = 'none';
-      const adminSection = document.getElementById('admin');
-      if (adminSection) adminSection.remove();
-    }
-  });
-loadSectionContent(); // вчитува содржина од базата
+  fetch('/session-status')
+    .then(res => res.json())
+    .then(data => {
+      if (data.loggedIn && data.role === 'admin') {
+        document.getElementById('admin-nav').style.display = 'inline-block';
+        document.getElementById('logout-nav').style.display = 'inline-block';
+        enableAdminEditing();
+        loadSectionContent();
+      }
+    });
 
 </script>
 </body>
