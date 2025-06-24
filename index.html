@@ -139,116 +139,17 @@
     .submit-btn:hover, .cta-button:hover {
       background-color: #d7493f;
     }
-    .section-container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 0;
-    }
-
-    .section-intro {
-      color: #555;
-      margin-bottom: 30px;
-      font-size: 1.1rem;
-    }
-
     .job-filters {
       display: flex;
-      gap: 15px;
-      margin-bottom: 30px;
+      gap: 10px;
       flex-wrap: wrap;
-    }
-
-    .filter-select, .search-input {
-      padding: 10px 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    .search-input {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .jobs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 25px;
-    }
-
-    .job-card {
-      background: white;
-      border-radius: 8px;
-      padding: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .job-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .job-type {
-      background: #f0f0f0;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      color: #555;
-    }
-
-    .job-company {
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .job-location {
-      color: #666;
       margin-bottom: 15px;
-      font-size: 0.9rem;
     }
-
-    .job-description {
-      margin-bottom: 20px;
-      color: #444;
-      line-height: 1.5;
-    }
-
-    .job-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid #eee;
-    }
-
-    .job-posted {
-      color: #888;
-      font-size: 0.85rem;
-    }
-
-    .apply-btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .apply-btn:hover {
-      background: #d7493f;
+    .job-card {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 6px;
     }
     @media screen and (max-width: 768px) {
   
@@ -301,36 +202,22 @@ section.active.fade {
 
   <main>
     <section id="home" class="hero-section active">
-      <div class="hero-container">
-        <div class="hero-content">
-          <h1>Empowering Youth Through Opportunity</h1>
-          <p class="hero-text">
-            ASKINA Foundation bridges the gap between potential and opportunity by connecting underprivileged students with meaningful employment, educational scholarships, and safe housing solutions.
-          </p>
-          <div class="impact-stats">
-            <div class="stat-item">
-              <div class="stat-number">1,200+</div>
-              <div class="stat-label">Students Helped</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">85%</div>
-              <div class="stat-label">Employment Rate</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">50+</div>
-              <div class="stat-label">Partner Companies</div>
-            </div>
-          </div>
-          <div class="hero-cta">
-            <button onclick="showSection('jobs')" class="cta-btn">Explore Opportunities</button>
-            <button onclick="showSection('donate')" class="cta-btn secondary">Make an Impact</button>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students collaborating">
-        </div>
-      </div>
-    </section>
+
+  <div class="hero-content">
+    <h1>Creating Opportunities for Youth</h1>
+    <p class="hero-text">
+      ASKINA Foundation connects underprivileged students with job opportunities, scholarships, and safe housing through partnerships with local businesses and organizations.
+    </p>
+    <div class="hero-cta">
+      <button onclick="showSection('jobs')" class="cta-btn">Find Jobs</button>
+      <button onclick="showSection('donate')" class="cta-btn secondary">Support Us</button>
+    </div>
+	<BR>
+	<div class="hero-image">
+    <img src="https://www.graduateprogram.org/wp-content/uploads/2025/03/Mar-5-Should-Students-Have-Homework_web-1024x683.jpg" alt="Students learning and working">
+  </div>
+  </div>
+</section>
 
 
     <section id="about"><h2>About Us</h2><p>At ASKINA Foundation, we believe every child deserves a chance—regardless of their background. Our mission is rooted in compassion, equity, and the unwavering belief that opportunity should never be a privilege, but a right.
@@ -351,47 +238,7 @@ This is not charity. This is justice. And we are committed to making it real, on
   </div>
 </div>
 We turn ideas into action, transforming lives and creating brighter futures.</p></section></B>
-    <section id="jobs">
-      <div class="section-container">
-        <h2>Current Opportunities</h2>
-        <p class="section-intro">Browse our latest job openings and internship opportunities for students and young professionals.</p>
-        
-        <div class="job-filters">
-          <select class="filter-select">
-            <option>All Job Types</option>
-            <option>Full-time</option>
-            <option>Part-time</option>
-            <option>Internship</option>
-          </select>
-          <select class="filter-select">
-            <option>All Locations</option>
-            <option>Skopje</option>
-            <option>Remote</option>
-            <option>Other</option>
-          </select>
-          <input type="text" class="search-input" placeholder="Search jobs...">
-        </div>
-        
-        <div class="jobs-grid">
-          <div class="job-card">
-            <div class="job-header">
-              <h3>Marketing Intern</h3>
-              <span class="job-type">Internship</span>
-            </div>
-            <div class="job-company">Tech Solutions Inc.</div>
-            <div class="job-location">📍 Skopje (Hybrid)</div>
-            <div class="job-description">
-              <p>We're looking for a creative marketing intern to assist with social media campaigns and content creation.</p>
-            </div>
-            <div class="job-footer">
-              <div class="job-posted">Posted 3 days ago</div>
-              <button class="apply-btn">Apply Now</button>
-            </div>
-          </div>
-          <!-- More job cards would be loaded here -->
-        </div>
-      </div>
-    </section>
+    <section id="jobs"><h2>Job Board</h2><div class="job-card">Jobs loading...</div></section>
     <section id="post-job">
   <h2>Post a Job Opportunity</h2>
   <form id="job-post-form">
