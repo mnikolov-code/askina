@@ -28,11 +28,12 @@ app.post('/login', async (req, res) => {
   if (user) {
     req.session.user = user.username;
     req.session.role = user.username === 'admin' ? 'admin' : 'user';
-    res.redirect('/');
+    res.json({ success: true }); // 🔁 Враќа JSON
   } else {
-    res.status(401).send('Login failed.');
+    res.status(401).json({ success: false, message: 'Login failed' });
   }
 });
+
 
 app.post('/register', async (req, res) => {
   const { username } = req.body;

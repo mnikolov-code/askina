@@ -446,6 +446,26 @@ function saveAllSections() {
   alert("All changes saved!");
 }
 
+ document.querySelector('#login form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: formData.get('username'),
+        password: formData.get('password')
+      })
+    }).then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          window.location.reload(); // 🔄 reload за да се прикаже админ функционалноста
+        } else {
+          alert('Login failed!');
+        }
+      });
+  });
+
 // Автоматски вчитување содржина од backend за секоја editable секција
 function loadSectionContent() {
   editableSections.forEach(id => {
