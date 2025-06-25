@@ -533,7 +533,10 @@ main > section:not(.active) {
     <div class="hero-cta">
       <button class="button" onclick="showSection('jobs')"><i class="fas fa-briefcase"></i> Find Job</button>
 
-<button class="button" onclick="openDonateModal()"><i class="fas fa-heart"></i> Support Us</button>
+<button class="button" onclick="openDonateModal(); openInvoiceModal();">
+  <i class="fas fa-heart"></i> Support Us
+</button>
+
 
 
 
@@ -790,6 +793,18 @@ main > section:not(.active) {
   z-index: 9999;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 "></div>
+<!-- Invoice Modal -->
+<div id="invoiceDetailsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; border-radius: 10px; padding: 30px 40px; width: 95%; max-width: 560px; position: relative; margin: auto;">
+    <button onclick="closeInvoiceModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #b02a37;">×</button>
+    <h2 style="color: #b02a37; text-align: center;">Donation Details</h2>
+    <p>Bank: First Century Bank <button onclick="copyToClipboardText('First Century Bank')">Copy</button></p>
+    <p>Routing: 061120084 <button onclick="copyToClipboardText('061120084')">Copy</button></p>
+    <p>Account: 123456789 <button onclick="copyToClipboardText('123456789')">Copy</button></p>
+    <p>Beneficiary: Martin Nikolov (ASKINA.ORG/NGO) <button onclick="copyToClipboardText('Martin Nikolov (ASKINA)')">Copy</button></p>
+    <p>Include invoice number as reference <button onclick="copyToClipboardText('Include invoice number as reference')">Copy</button></p>
+  </div>
+</div>
 
 
 <script>
@@ -807,6 +822,28 @@ function showApplicationForm(title) {
 function openDonateModal() {
   document.getElementById('donate-modal').style.display = 'flex';
 }
+
+function openInvoiceModal() {
+  document.getElementById('invoiceDetailsModal').style.display = 'flex';
+}
+
+function closeInvoiceModal() {
+  document.getElementById('invoiceDetailsModal').style.display = 'none';
+}
+
+function copyToClipboard(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Copied to clipboard');
+  });
+}
+
+function copyToClipboardText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Copied to clipboard');
+  });
+}
+
 function closeDonateModal() {
   document.getElementById('donate-modal').style.display = 'none';
 }
@@ -1106,6 +1143,24 @@ function showSection(id) {
       }
     });
 
+</script>
+
+<div id="videoPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 800px; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+        <h2 style="color: red; text-align: center;">What the others say about ASKINA</h2>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/5VciTEM6tag?autoplay=1&modestbranding=1&controls=0&showinfo=0&rel=0?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <button onclick="document.getElementById('videoPopup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">X</button>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        var popup = document.getElementById('videoPopup');
+        if (isMobile) {
+            popup.style.height = '100%';
+        }
+        popup.style.display = 'block';
+    });
 </script>
 </body>
 </html>

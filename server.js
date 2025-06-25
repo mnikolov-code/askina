@@ -218,8 +218,8 @@ app.post('/api/donate', async (req, res) => {
   });
 
   // Write PDF content
-  doc.fontSize(20).text('INVOICE – ASKINA', { align: 'center' }).moveDown();
-  doc.fontSize(12).text(`Invoice Number: ${invoiceNo}`);
+  doc.fontSize(20).text('Donation – ASKINA', { align: 'center' }).moveDown();
+  doc.fontSize(12).text(`Doc. Number: ${invoiceNo}`);
   doc.text(`Date: ${dateStr}`);
   doc.text(`Donor Name: ${name}`);
   doc.text(`Email: ${email}`);
