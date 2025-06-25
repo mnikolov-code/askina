@@ -1,14 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <meta charset="UTF-8" />
-  <title>ASKINA NGO Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-  <style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<title>ASKINA NGO Platform</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<style>
      :root {
       --primary: #b02a37;
       --secondary: #fff4f4;
@@ -474,285 +473,242 @@ main > section:not(.active) {
   </style>
 </head>
 <body>
-   <header class="site-header">
-    <div class="header-container">
-      <div class="header-logo">
-        <img src="logo.png" alt="ASKINA Logo" class="logo-img">
-        <div class="logo-text">
-          <h1>ASKINA Foundation</h1>
-          <p class="tagline">Empowering Youth Through Opportunities</p>
-        </div>
-      </div>
-      <nav class="main-nav">
-        <ul style="list-style: none; display: flex; gap: 20px; padding-left: 0; margin: 0;">
-          <li><a onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"><i class="fas fa-building"></i> For Companies</a>
-            <div class="dropdown-content">
-              <a onclick="showSection('post-job')">Post a Job</a>
-              <a onclick="showSection('donate')">Donate</a>
-              <a onclick="showSection('partners')">Partnership</a>
-              <a onclick="showSection('contact')">Contact</a>
-              <a onclick="showSection('about')">About</a>
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"><i class="fas fa-user-graduate"></i> For Students</a>
-            <div class="dropdown-content">
-              <a onclick="showSection('jobs')">Job Board</a>
-              <a onclick="showSection('scholarships')">Scholarships</a>
-              <a onclick="showSection('contact')">Contact</a>
-			                <a onclick="showSection('about')">About</a>
-
-            
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn"><i class="fas fa-lock"></i> Admin</a>
-            <div class="dropdown-content">
-              <a onclick="showSection('login')">Login</a>
-              <a onclick="showSection('register')">Register</a>
-            </div>
-          </li>
-          <li id="admin-nav" style="display: none;"><a onclick="showSection('admin')" id="admin-link">Admin Panel</a></li>
-          <li id="logout-nav" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header></header>
-
-  <main>
-    <section id="home" class="hero-section active">
-
-  <div class="hero-content">
-    <h1>Creating Opportunities for Youth</h1>
-    <p class="hero-text">
+<header class="site-header">
+<div class="header-container">
+<div class="header-logo">
+<img alt="ASKINA Logo" class="logo-img" src="logo.png"/>
+<div class="logo-text">
+<h1>ASKINA Foundation</h1>
+<p class="tagline">Empowering Youth Through Opportunities</p>
+</div>
+</div>
+<nav class="main-nav">
+<ul style="list-style: none; display: flex; gap: 20px; padding-left: 0; margin: 0;">
+<li><a onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
+<li class="dropdown">
+<a class="dropbtn" href="#"><i class="fas fa-building"></i> For Companies</a>
+<div class="dropdown-content">
+<a onclick="showSection('post-job')">Post a Job</a>
+<a onclick="showSection('donate')">Donate</a>
+<a onclick="showSection('partners')">Partnership</a>
+<a onclick="showSection('contact')">Contact</a>
+<a onclick="showSection('about')">About</a>
+</div>
+</li>
+<li class="dropdown">
+<a class="dropbtn" href="#"><i class="fas fa-user-graduate"></i> For Students</a>
+<div class="dropdown-content">
+<a onclick="showSection('jobs')">Job Board</a>
+<a onclick="showSection('scholarships')">Scholarships</a>
+<a onclick="showSection('contact')">Contact</a>
+<a onclick="showSection('about')">About</a>
+</div>
+</li>
+<li class="dropdown">
+<a class="dropbtn" href="#"><i class="fas fa-lock"></i> Admin</a>
+<div class="dropdown-content">
+<a onclick="showSection('login')">Login</a>
+<a onclick="showSection('register')">Register</a>
+</div>
+</li>
+<li id="admin-nav" style="display: none;"><a id="admin-link" onclick="showSection('admin')">Admin Panel</a></li>
+<li id="logout-nav" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero-section active" id="home">
+<div class="hero-content">
+<h1>Creating Opportunities for Youth</h1>
+<p class="hero-text">
       ASKINA Foundation connects underprivileged students with job opportunities, scholarships, and safe housing through partnerships with local businesses and organizations.
     </p>
-    <div class="hero-cta">
-      <button class="button"><i class="fas fa-briefcase"></i> Find Job</button>
+<div class="hero-cta">
+<button class="button"><i class="fas fa-briefcase"></i> Find Job</button>
 <button class="button" onclick="showSection('donate')"><i class="fas fa-heart"></i> Support Us</button>
-
-
-    </div>
-	<BR>
-	<div class="hero-image">
-    <img src="https://www.graduateprogram.org/wp-content/uploads/2025/03/Mar-5-Should-Students-Have-Homework_web-1024x683.jpg" alt="Students learning and working">
-  </div>
-  </div>
+</div>
+<br/>
+<div class="hero-image">
+<img alt="Students learning and working" src="https://www.graduateprogram.org/wp-content/uploads/2025/03/Mar-5-Should-Students-Have-Homework_web-1024x683.jpg"/>
+</div>
+</div>
 </section>
-
-
-    <section id="about"><div class="about-container">
-
-    <h2 style="text-align: center; font-size: 2.2em; color: #b02a37;">Our Mission</h2>
-    <p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px; text-align: justify;">
+<section id="about"><div class="about-container">
+<h2 style="text-align: center; font-size: 2.2em; color: #b02a37;">Our Mission</h2>
+<p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px; text-align: justify;">
       At <strong>ASKINA Foundation</strong>, we believe every child deserves a chance—regardless of their background.
       Our mission is rooted in <strong>compassion</strong>, <strong>equity</strong>, and the unwavering belief that opportunity should never be a privilege, but a right.
-      <br><br>
+      <br/><br/>
       We are dedicated to supporting children and young people from socially vulnerable families by opening doors they never thought possible.
       Through our growing network of <strong>employers, educators, and housing organizations</strong>, we help them find stable job opportunities,
       secure scholarships, enroll in universities, and access safe and affordable student housing.
-      <br><br>
+      <br/><br/>
       For many of these children, we are not just a stepping stone, but a lifeline.
       We stand by them from their first job interview to their first day at university—
       ensuring that their dreams don’t fade because of circumstances beyond their control.
-      <br><br>
-      <em>This is not charity. This is justice. And we are committed to making it real, one young life at a time.</em>
-    </p>
-
-    <div class="about-askina-values">
-      <h2 style="text-align: center; margin-top: 0;">What does ASKINA stand for?</h2>
-      <div style="display: flex; flex-direction: column; gap: 15px; max-width: 700px; margin: auto; font-size: 1.05em;">
-        <p><strong><i class="fas fa-arrow-right"></i> A</strong> – <strong>Access to Opportunities</strong><br />We provide access to education, jobs, and housing for underprivileged youth.</p>
-        <p><strong><i class="fas fa-arrow-right"></i> S</strong> – <strong>Support for Students</strong><br />Continuous support to help students reach their full potential.</p>
-        <p><strong><i class="fas fa-arrow-right"></i> K</strong> – <strong>Knowledge Empowerment</strong><br />We empower young people through knowledge, training, and mentorship.</p>
-        <p><strong><i class="fas fa-arrow-right"></i> I</strong> – <strong>Inclusion & Equity</strong><br />Promoting inclusion and fair chances for everyone, regardless of their background.</p>
-        <p><strong><i class="fas fa-arrow-right"></i> N</strong> – <strong>Network of Partnerships</strong><br />Building a strong network with businesses, educational institutions, and communities.</p>
-        <p><strong><i class="fas fa-arrow-right"></i> A</strong> – <strong>Action for a Better Future</strong><br />We turn ideas into action, transforming lives and creating brighter futures.</p>
-      </div>
-    </div>
-
-    <p style="text-align: center; margin-top: 30px; font-style: italic; font-size: 1.1em;">
+      <br/><br/>
+<em>This is not charity. This is justice. And we are committed to making it real, one young life at a time.</em>
+</p>
+<div class="about-askina-values">
+<h2 style="text-align: center; margin-top: 0;">What does ASKINA stand for?</h2>
+<div style="display: flex; flex-direction: column; gap: 15px; max-width: 700px; margin: auto; font-size: 1.05em;">
+<p><strong><i class="fas fa-arrow-right"></i> A</strong> – <strong>Access to Opportunities</strong><br>We provide access to education, jobs, and housing for underprivileged youth.</br></p>
+<p><strong><i class="fas fa-arrow-right"></i> S</strong> – <strong>Support for Students</strong><br>Continuous support to help students reach their full potential.</br></p>
+<p><strong><i class="fas fa-arrow-right"></i> K</strong> – <strong>Knowledge Empowerment</strong><br>We empower young people through knowledge, training, and mentorship.</br></p>
+<p><strong><i class="fas fa-arrow-right"></i> I</strong> – <strong>Inclusion &amp; Equity</strong><br>Promoting inclusion and fair chances for everyone, regardless of their background.</br></p>
+<p><strong><i class="fas fa-arrow-right"></i> N</strong> – <strong>Network of Partnerships</strong><br>Building a strong network with businesses, educational institutions, and communities.</br></p>
+<p><strong><i class="fas fa-arrow-right"></i> A</strong> – <strong>Action for a Better Future</strong><br>We turn ideas into action, transforming lives and creating brighter futures.</br></p>
+</div>
+</div>
+<p style="text-align: center; margin-top: 30px; font-style: italic; font-size: 1.1em;">
       We turn ideas into action, transforming lives and creating brighter futures.
     </p>
-  </div>
+</div>
 </section>
-    <section id="jobs"><h2>Job Board</h2><div class="job-card">Jobs loading...</div></section>
-    <section id="post-job">
-  <h2>Post a Job Opportunity</h2>
-  <form id="job-post-form">
-    <label for="job-title">Job Title*</label>
-    <input type="text" id="job-title" name="job-title" required>
-
-    <label for="job-company">Company Name*</label>
-    <input type="text" id="job-company" name="job-company" required>
-
-    <label for="job-type">Job Type*</label>
-    <select id="job-type" name="job-type" required>
-      <option value="">Select type</option>
-      <option value="full-time">Full-time</option>
-      <option value="part-time">Part-time</option>
-      <option value="internship">Internship</option>
-    </select>
-
-    <label for="job-location">Location*</label>
-    <input type="text" id="job-location" name="job-location" required>
-
-    <label for="job-description">Job Description*</label>
-    <textarea id="job-description" name="job-description" required></textarea>
-
-    <label for="job-contact">Contact Email*</label>
-    <input type="hidden" id="job-contact" name="job-contact" value="info@askina.org">
-
-
-    <button type="submit" class="button">Submit Job</button>
-  </form>
-  
-</section>
-<section id="apply-form-section" style="display: none;">
-  <h2>Apply for Job</h2>
-  <form id="apply-form" enctype="multipart/form-data" method="POST" action="/api/apply-job">
-    <input type="hidden" id="job-title-hidden" name="jobTitle">
-    <label>Full Name*</label>
-    <input type="text" name="name" required>
-    <label>Email*</label>
-    <input type="email" name="email" required>
-    <label>Message</label>
-    <textarea name="message"></textarea>
-    <label>Attach CV (PDF/DOC)</label>
-    <input type="file" name="cv" required>
-    <button type="submit" class="button">Send Application</button>
-  </form>
-</section>
-<section id="partners" class="fade">
-  <div class="about-container" style="text-align: center;">
-    <h2>Strategic Partnership: Diab-Reg</h2>
-    <img src="logo1.jpg" alt="Diab-Reg Logo" style="width: 160px; max-width: 100%; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-    
-    <p style="font-size: 1.1em; line-height: 1.7; text-align: justify;">
-      <strong>ASKINA Foundation</strong> is proud to maintain a strong and ongoing collaboration with <a href="https://diab-reg.software/mk" target="_blank" style="color: var(--primary); font-weight: 600;">Diab-Reg</a> — an innovative digital solution for managing standardized product certifications specifically tailored for the needs of people living with diabetes.
-    </p>
-
-    <p style="font-size: 1.1em; line-height: 1.7; text-align: justify;">
-      Through this partnership, several ASKINA members are already <strong>honorarily engaged</strong> with Diab-Reg in roles ranging from technical consultancy to community outreach and certification processes. Together, we are helping build a more reliable and trusted ecosystem for diabetes-related products in the Macedonian market.
-    </p>
-
-    <p style="font-size: 1.1em; font-style: italic;">
-      With Diab-Reg, we are not just validating products — we are <strong>raising the standard of care</strong> for people with diabetes.
-    </p>
-  </div>
-</section>
-
-<section id="scholarships">
-  <h2>Scholarships</h2>
-  <p>
-    Education should never be a luxury—it should be a promise. At <strong>ASKINA Foundation</strong>, we are turning that promise into reality for young people who need it the most.
-  </p>
-  <p>
-    Our scholarship program is designed to uplift students from socially vulnerable backgrounds by removing the financial barriers that stand between them and their dreams. Whether it's tuition fees, books, application costs, or transportation—our support goes beyond just financial aid. We invest in the full journey of each student.
-  </p>
-  <p>
-    We work closely with universities, donors, and local communities to identify young talents with strong potential and limited means. Through our scholarships, these students are not just given an opportunity to study—they are given hope, dignity, and a future they can shape on their own terms.
-  </p>
-  <p>
-    Every scholarship we award is a commitment—to stand beside these students, encourage their growth, and help them break the cycle of poverty through education.
-  </p>
-  <p>
-    <em>Because we believe that a single degree can lift an entire family—and change the course of a community.</em>
-  </p>
-</section>
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>
-    Whether you’re a student seeking support, a company willing to offer opportunities, a donor ready to make a difference, or just someone with a kind heart and an idea—your voice matters.
-  </p>
-  <p>
-    At <strong>ASKINA Foundation</strong>, we believe in the power of connection. Reach out to us with your questions, suggestions, collaborations, or simply to say hello. Together, we can build stronger bridges for those who need them most.
-  </p>
-
-  <form id="contact-form">
-    <label for="contact-name">Full Name*</label>
-    <input type="text" id="contact-name" name="name" placeholder="Your name" required>
-
-    <label for="contact-email">Email Address*</label>
-    <input type="email" id="contact-email" name="email" placeholder="Your email" required>
-
-    <label for="contact-subject">Subject*</label>
-    <input type="text" id="contact-subject" name="subject" placeholder="Subject of your message" required>
-
-    <label for="contact-message">Message*</label>
-    <textarea id="contact-message" name="message" placeholder="Write your message here..." required></textarea>
-
-    <button type="submit" class="button">Send Message</button>
-  </form>
-
-  <p style="margin-top: 20px;">
-    📍 Skopje, North Macedonia<br />
-    ✉️ Email: <a href="mailto:askina.org@gmail.com" style="color: var(--primary); text-decoration: underline;">info@askina.org</a><br />
-    ☎️ Phone: +389 70 123 456
-  </p>
-</section>
-
-<!-- Updated login section -->
-<section id="login">
-  <h2>Login</h2>
-  <form method="POST" action="/login">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required>
-
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-
-    <button type="submit" class="cta-button">Login</button>
-  </form>
-</section>
-
-<!-- Updated register section -->
-<section id="register">
-  <h2>Register</h2>
-  <form method="POST" action="/register">
-    <label for="reg-username">Username</label>
-    <input type="text" id="reg-username" name="username" required>
-
-    <label for="reg-password">Password</label>
-    <input type="password" id="reg-password" name="password" required>
-
-    <label for="reg-email">Email</label>
-    <input type="email" id="reg-email" name="email" required>
-
-    <button type="submit" class="cta-button">Register</button>
-  </form>
-</section>
-    <section id="admin">
-  <h2>Admin Panel</h2>
-  <p>Click a section to start editing its content directly.</p>
-  <div id="admin-content">Loading...</div>
-</section>
-
-  <section id="donate" style="padding: 20px;">
-
-  <h2>Donate to Support Our Students</h2>
-  <form id="donation-form">
-  <label for="donation-amount">Donation Amount (USD)</label>
-  <input type="number" id="donation-amount" name="amount" required>
-
-  <label for="donor-name">Full Name</label>
-  <input type="text" id="donor-name" name="name" required>
-
-  <label for="donor-email">Email Address</label>
-  <input type="email" id="donor-email" name="email" required>  <button type="submit" class="button">Donate</button>
+<section id="jobs"><h2>Job Board</h2><div class="job-card">Jobs loading...</div></section>
+<section id="post-job">
+<h2>Post a Job Opportunity</h2>
+<form id="job-post-form">
+<label for="job-title">Job Title*</label>
+<input id="job-title" name="job-title" required="" type="text"/>
+<label for="job-company">Company Name*</label>
+<input id="job-company" name="job-company" required="" type="text"/>
+<label for="job-type">Job Type*</label>
+<select id="job-type" name="job-type" required="">
+<option value="">Select type</option>
+<option value="full-time">Full-time</option>
+<option value="part-time">Part-time</option>
+<option value="internship">Internship</option>
+</select>
+<label for="job-location">Location*</label>
+<input id="job-location" name="job-location" required="" type="text"/>
+<label for="job-description">Job Description*</label>
+<textarea id="job-description" name="job-description" required=""></textarea>
+<label for="job-contact">Contact Email*</label>
+<input id="job-contact" name="job-contact" type="hidden" value="info@askina.org"/>
+<button class="button" type="submit">Submit Job</button>
 </form>
 </section>
-  </main>
-  
+<section id="apply-form-section" style="display: none;">
+<h2>Apply for Job</h2>
+<form action="/api/apply-job" enctype="multipart/form-data" id="apply-form" method="POST">
+<input id="job-title-hidden" name="jobTitle" type="hidden"/>
+<label>Full Name*</label>
+<input name="name" required="" type="text"/>
+<label>Email*</label>
+<input name="email" required="" type="email"/>
+<label>Message</label>
+<textarea name="message"></textarea>
+<label>Attach CV (PDF/DOC)</label>
+<input name="cv" required="" type="file"/>
+<button class="button" type="submit">Send Application</button>
+</form>
+</section>
+<section class="fade" id="partners">
+<div class="about-container" style="text-align: center;">
+<h2>Strategic Partnership: Diab-Reg</h2>
+<img alt="Diab-Reg Logo" src="logo1.jpg" style="width: 160px; max-width: 100%; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"/>
+<p style="font-size: 1.1em; line-height: 1.7; text-align: justify;">
+<strong>ASKINA Foundation</strong> is proud to maintain a strong and ongoing collaboration with <a href="https://diab-reg.software/mk" style="color: var(--primary); font-weight: 600;" target="_blank">Diab-Reg</a> — an innovative digital solution for managing standardized product certifications specifically tailored for the needs of people living with diabetes.
+    </p>
+<p style="font-size: 1.1em; line-height: 1.7; text-align: justify;">
+      Through this partnership, several ASKINA members are already <strong>honorarily engaged</strong> with Diab-Reg in roles ranging from technical consultancy to community outreach and certification processes. Together, we are helping build a more reliable and trusted ecosystem for diabetes-related products in the Macedonian market.
+    </p>
+<p style="font-size: 1.1em; font-style: italic;">
+      With Diab-Reg, we are not just validating products — we are <strong>raising the standard of care</strong> for people with diabetes.
+    </p>
+</div>
+</section>
+<section id="scholarships">
+<h2>Scholarships</h2>
+<p>
+    Education should never be a luxury—it should be a promise. At <strong>ASKINA Foundation</strong>, we are turning that promise into reality for young people who need it the most.
+  </p>
+<p>
+    Our scholarship program is designed to uplift students from socially vulnerable backgrounds by removing the financial barriers that stand between them and their dreams. Whether it's tuition fees, books, application costs, or transportation—our support goes beyond just financial aid. We invest in the full journey of each student.
+  </p>
+<p>
+    We work closely with universities, donors, and local communities to identify young talents with strong potential and limited means. Through our scholarships, these students are not just given an opportunity to study—they are given hope, dignity, and a future they can shape on their own terms.
+  </p>
+<p>
+    Every scholarship we award is a commitment—to stand beside these students, encourage their growth, and help them break the cycle of poverty through education.
+  </p>
+<p>
+<em>Because we believe that a single degree can lift an entire family—and change the course of a community.</em>
+</p>
+</section>
+<section id="contact">
+<h2>Contact Us</h2>
+<p>
+    Whether you’re a student seeking support, a company willing to offer opportunities, a donor ready to make a difference, or just someone with a kind heart and an idea—your voice matters.
+  </p>
+<p>
+    At <strong>ASKINA Foundation</strong>, we believe in the power of connection. Reach out to us with your questions, suggestions, collaborations, or simply to say hello. Together, we can build stronger bridges for those who need them most.
+  </p>
+<form id="contact-form">
+<label for="contact-name">Full Name*</label>
+<input id="contact-name" name="name" placeholder="Your name" required="" type="text"/>
+<label for="contact-email">Email Address*</label>
+<input id="contact-email" name="email" placeholder="Your email" required="" type="email"/>
+<label for="contact-subject">Subject*</label>
+<input id="contact-subject" name="subject" placeholder="Subject of your message" required="" type="text"/>
+<label for="contact-message">Message*</label>
+<textarea id="contact-message" name="message" placeholder="Write your message here..." required=""></textarea>
+<button class="button" type="submit">Send Message</button>
+</form>
+<p style="margin-top: 20px;">
+    📍 Skopje, North Macedonia<br>
+    ✉️ Email: <a href="mailto:askina.org@gmail.com" style="color: var(--primary); text-decoration: underline;">info@askina.org</a><br/>
+    ☎️ Phone: +389 70 123 456
+  </br></p>
+</section>
+<!-- Updated login section -->
+<section id="login">
+<h2>Login</h2>
+<form action="/login" method="POST">
+<label for="username">Username</label>
+<input id="username" name="username" required="" type="text"/>
+<label for="password">Password</label>
+<input id="password" name="password" required="" type="password"/>
+<button class="cta-button" type="submit">Login</button>
+</form>
+</section>
+<!-- Updated register section -->
+<section id="register">
+<h2>Register</h2>
+<form action="/register" method="POST">
+<label for="reg-username">Username</label>
+<input id="reg-username" name="username" required="" type="text"/>
+<label for="reg-password">Password</label>
+<input id="reg-password" name="password" required="" type="password"/>
+<label for="reg-email">Email</label>
+<input id="reg-email" name="email" required="" type="email"/>
+<button class="cta-button" type="submit">Register</button>
+</form>
+</section>
+<section id="admin">
+<h2>Admin Panel</h2>
+<p>Click a section to start editing its content directly.</p>
+<div id="admin-content">Loading...</div>
+</section>
+<section id="donate" style="padding: 20px;">
+<h2>Donate to Support Our Students</h2>
+<form id="donation-form">
+<label for="donation-amount">Donation Amount (USD)</label>
+<input id="donation-amount" name="amount" required="" type="number"/>
+<label for="donor-name">Full Name</label>
+<input id="donor-name" name="name" required="" type="text"/>
+<label for="donor-email">Email Address</label>
+<input id="donor-email" name="email" required="" type="email"/> <button class="button" type="submit">Donate</button><br/><br/><br/>
+<i>We will send you a details for donation to your mail. Please <b>check</b> your Inbox, or Other or Junk/Spam folder</i>
+</form>
+</section>
+</main>
 <!-- Banner above footer -->
-
-
-<footer style="text-align:center; padding: 20px; background-color: var(--primary); color: white;">
-  &copy; 2025 ASKINA Foundation. All rights reserved.
+<video autoplay="autoplay" controls="False" loop="loop" muted="muted" src="public/askinapresentation.mp4" style="width: 100%; display: block;"></video><footer style="text-align:center; padding: 20px; background-color: var(--primary); color: white;">
+  © 2025 ASKINA Foundation. All rights reserved.
 </footer>
-
 <div id="popup-message" style="
   position: fixed;
   top: 20px;
@@ -766,8 +722,6 @@ main > section:not(.active) {
   z-index: 9999;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 "></div>
-
-
 <script>
 
 function showApplicationForm(title) {
@@ -1053,11 +1007,11 @@ function showSection(id) {
 
 </script>
 <div id="videoPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 800px; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
-        <h2 style="color: red; text-align: center;">What the others say about ASKINA</h2>
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/5VciTEM6tag?autoplay=1&modestbranding=1&controls=0&showinfo=0&rel=0?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        <button onclick="document.getElementById('videoPopup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">X</button>
-    </div>
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 800px; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+<h2 style="color: red; text-align: center;">What the others say about ASKINA</h2>
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" height="400" src="https://www.youtube.com/embed/5VciTEM6tag?autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;rel=0?autoplay=1" width="100%"></iframe>
+<button onclick="document.getElementById('videoPopup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">X</button>
+</div>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
