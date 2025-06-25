@@ -27,7 +27,7 @@ app.post('/api/apply-job', upload.single('cv'), async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'askina.org@gmail.com',
-      pass: 'jclk ywww gfbf smyv'
+      pass: 'gsbt qtif vqxh yjfk'
     }
   });
 
@@ -192,7 +192,7 @@ app.post('/api/donate', async (req, res) => {
       service: 'gmail',
       auth: {
         user: 'askina.org@gmail.com',
-        pass: 'jclk ywww gfbf smyv' // App password
+        pass: 'gsbt qtif vqxh yjfk' // App password
       }
     });
 
@@ -218,8 +218,8 @@ app.post('/api/donate', async (req, res) => {
   });
 
   // Write PDF content
-  doc.fontSize(20).text('Donation – ASKINA', { align: 'center' }).moveDown();
-  doc.fontSize(12).text(`Doc. Number: ${invoiceNo}`);
+  doc.fontSize(20).text('INVOICE – ASKINA', { align: 'center' }).moveDown();
+  doc.fontSize(12).text(`Invoice Number: ${invoiceNo}`);
   doc.text(`Date: ${dateStr}`);
   doc.text(`Donor Name: ${name}`);
   doc.text(`Email: ${email}`);

@@ -490,8 +490,7 @@ main > section:not(.active) {
             <a href="#" class="dropbtn"><i class="fas fa-building"></i> For Companies</a>
             <div class="dropdown-content">
               <a onclick="showSection('post-job')">Post a Job</a>
-              <a onclick="openDonateModal()">Donate</a>
-
+              <a onclick="showSection('donate')">Donate</a>
               <a onclick="showSection('partners')">Partnership</a>
               <a onclick="showSection('contact')">Contact</a>
               <a onclick="showSection('about')">About</a>
@@ -520,7 +519,7 @@ main > section:not(.active) {
         </ul>
       </nav>
     </div>
-  </header>
+  </header></header>
 
   <main>
     <section id="home" class="hero-section active">
@@ -531,17 +530,12 @@ main > section:not(.active) {
       ASKINA Foundation connects underprivileged students with job opportunities, scholarships, and safe housing through partnerships with local businesses and organizations.
     </p>
     <div class="hero-cta">
-      <button class="button" onclick="showSection('jobs')"><i class="fas fa-briefcase"></i> Find Job</button>
-
-<button class="button" onclick="openDonateModal(); openInvoiceModal();">
-  <i class="fas fa-heart"></i> Support Us
-</button>
-
-
+      <button class="button"><i class="fas fa-briefcase"></i> Find Job</button>
+<button class="button" onclick="showSection('donate')"><i class="fas fa-heart"></i> Support Us</button>
 
 
     </div>
-	<BR><BR>
+	<BR>
 	<div class="hero-image">
     <img src="https://www.graduateprogram.org/wp-content/uploads/2025/03/Mar-5-Should-Students-Have-Homework_web-1024x683.jpg" alt="Students learning and working">
   </div>
@@ -608,7 +602,7 @@ main > section:not(.active) {
     <label for="job-description">Job Description*</label>
     <textarea id="job-description" name="job-description" required></textarea>
 
-   
+    <label for="job-contact">Contact Email*</label>
     <input type="hidden" id="job-contact" name="job-contact" value="info@askina.org">
 
 
@@ -736,8 +730,7 @@ main > section:not(.active) {
   <div id="admin-content">Loading...</div>
 </section>
 
-  <section id="donate" style="display:none;">
-
+  <section id="donate" style="padding: 20px;">
 
   <h2>Donate to Support Our Students</h2>
   <form id="donation-form">
@@ -749,34 +742,14 @@ main > section:not(.active) {
 
   <label for="donor-email">Email Address</label>
   <input type="email" id="donor-email" name="email" required>  <button type="submit" class="button">Donate</button>
- <p> We will send you a info for donation to your e-mail.</p>
 </form>
 </section>
   </main>
   
 <!-- Banner above footer -->
-<!-- Donate Modal -->
-<div id="donate-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
-  <div style="background: white; border-radius: 10px; padding: 30px 40px; width: 95%; max-width: 560px; position: relative; margin: auto;">
-
-    <button onclick="closeDonateModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #b02a37;">&times;</button>
-
-    <h2>Donate to Support Our Students</h2>
-    <form id="donation-form-modal">
-      <label for="donation-amount-modal">Donation Amount (USD)</label>
-      <input type="number" id="donation-amount-modal" name="amount" required>
-      <label for="donor-name-modal">Full Name</label>
-      <input type="text" id="donor-name-modal" name="name" required>
-      <label for="donor-email-modal">Email Address</label>
-      <input type="email" id="donor-email-modal" name="email" required>
-      <button type="submit" class="button">Donate</button>
-    </form>
-  </div>
-</div>
 
 
-<footer style="text-align:center; padding: 20px; background-color: var(--primary); color: white; position: sticky; bottom: 0; width: 100%;">
+<footer style="text-align:center; padding: 20px; background-color: var(--primary); color: white;">
   &copy; 2025 ASKINA Foundation. All rights reserved.
 </footer>
 
@@ -793,18 +766,6 @@ main > section:not(.active) {
   z-index: 9999;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 "></div>
-<!-- Invoice Modal -->
-<div id="invoiceDetailsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
-  <div style="background: white; border-radius: 10px; padding: 30px 40px; width: 95%; max-width: 560px; position: relative; margin: auto;">
-    <button onclick="closeInvoiceModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #b02a37;">×</button>
-    <h2 style="color: #b02a37; text-align: center;">Donation Details</h2>
-    <p>Bank: First Century Bank <button onclick="copyToClipboardText('First Century Bank')">Copy</button></p>
-    <p>Routing: 061120084 <button onclick="copyToClipboardText('061120084')">Copy</button></p>
-    <p>Account: 123456789 <button onclick="copyToClipboardText('123456789')">Copy</button></p>
-    <p>Beneficiary: Martin Nikolov (ASKINA.ORG/NGO) <button onclick="copyToClipboardText('Martin Nikolov (ASKINA)')">Copy</button></p>
-    <p>Include invoice number as reference <button onclick="copyToClipboardText('Include invoice number as reference')">Copy</button></p>
-  </div>
-</div>
 
 
 <script>
@@ -817,35 +778,6 @@ function showApplicationForm(title) {
     jobTitleHidden.value = title;
     showSection('apply-form-section');
   }
-}
-
-function openDonateModal() {
-  document.getElementById('donate-modal').style.display = 'flex';
-}
-
-function openInvoiceModal() {
-  document.getElementById('invoiceDetailsModal').style.display = 'flex';
-}
-
-function closeInvoiceModal() {
-  document.getElementById('invoiceDetailsModal').style.display = 'none';
-}
-
-function copyToClipboard(id) {
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    alert('Copied to clipboard');
-  });
-}
-
-function copyToClipboardText(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    alert('Copied to clipboard');
-  });
-}
-
-function closeDonateModal() {
-  document.getElementById('donate-modal').style.display = 'none';
 }
 
   const jobs = [];
@@ -861,30 +793,6 @@ function closeDonateModal() {
   description: document.getElementById('job-description').value,
   contact: "info@askina.org" // 🚫 hardcoded, ignore the input field
 };
-
-
-
-// Submit logic for modal form
-document.getElementById('donation-form-modal').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const amount = document.getElementById('donation-amount-modal').value;
-  const name = document.getElementById('donor-name-modal').value;
-  const email = document.getElementById('donor-email-modal').value;
-
-  const res = await fetch('/api/donate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ amount, name, email })
-  });
-
-  if (res.ok) {
-    showPopup('✅ Thank you! Invoice has been sent.', true);
-    this.reset();
-    closeDonateModal();
-  } else {
-    showPopup('❌ Error sending invoice.', false);
-  }
-});
 
 document.getElementById('donation-form').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -1144,7 +1052,6 @@ function showSection(id) {
     });
 
 </script>
-
 <div id="videoPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 800px; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
         <h2 style="color: red; text-align: center;">What the others say about ASKINA</h2>
