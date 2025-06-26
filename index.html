@@ -520,7 +520,7 @@ main > section:not(.active) {
 <script>
     function setLanguage(lang) {
   // Промени текстот во сите елементи со data-mk и data-en
-  document.querySelectorAll('[data-en], [data-mk]').forEach(el => {
+  document.querySelectorAll('[data-en], [data-mk], [data-sq]').forEach(el => {
     const text = el.getAttribute('data-' + lang);
     if (text) el.textContent = text;
   });
@@ -529,6 +529,8 @@ main > section:not(.active) {
   const langBtn = document.getElementById('language-button');
   if (lang === 'mk') {
     langBtn.innerHTML = '🇲🇰 Македонски <i class="fas fa-chevron-down"></i>';
+  } else if (lang === 'sq') {
+    langBtn.innerHTML = '🇦🇱 Shqip <i class="fas fa-chevron-down"></i>';
   } else {
     langBtn.innerHTML = '🇺🇸 English <i class="fas fa-chevron-down"></i>';
   }
@@ -542,8 +544,8 @@ main > section:not(.active) {
 <div class="header-logo">
 <img alt="ASKINA Logo" class="logo-img" src="logo.png"/>
 <div class="logo-text">
-<h1 data-en="ASKINA Foundation" data-mk="Фондација АСКИНА">ASKINA Foundation</h1>
-<p class="tagline" data-en="Empowering Youth Through Opportunities" data-mk="Овозможување на млади преку можности">Empowering Youth Through Opportunities</p>
+<h1 data-en="ASKINA Foundation" data-mk="Фондација АСКИНА" data-sq="Fondacioni ASKINA">ASKINA Foundation</h1>
+<p class="tagline" data-en="Empowering Youth Through Opportunities" data-mk="Овозможување на млади преку можности" data-sq="Fuqizimi i të rinjve përmes mundësive">Empowering Youth Through Opportunities</p>
 </div>
 </div>
 <nav class="main-nav">
@@ -571,22 +573,20 @@ main > section:not(.active) {
 <li class="dropdown">
 <a class="dropbtn" data-en="Admin" data-mk="Админ" href="#"><i class="fas fa-lock"></i> Admin</a>
 <div class="dropdown-content">
-<a data-en="Login" data-mk="Најава" onclick="showSection('login')">Login</a>
-<a data-en="Register" data-mk="Регистрација" onclick="showSection('register')">Register</a>
+<a data-en="Login" data-mk="Најава" data-sq="Hyrje" onclick="showSection('login')">Login</a>
+<a data-en="Register" data-mk="Регистрација" data-sq="Regjistrohu" onclick="showSection('register')">Register</a>
 </div>
 </li>
 <li>
 <li class="dropdown">
-  <a class="dropbtn" href="#" id="language-button">
+<a class="dropbtn" href="#" id="language-button">
     🇺🇸 English <i class="fas fa-chevron-down"></i>
-  </a>
-  <div class="dropdown-content">
-    <a href="#" onclick="setLanguage('mk')">🇲🇰 Македонски</a>
-    <a href="#" onclick="setLanguage('en')">🇺🇸 English</a>
-  </div>
+</a>
+<div class="dropdown-content">
+<a href="#" onclick="setLanguage('mk')">🇲🇰 Македонски</a>
+<a href="#" onclick="setLanguage('en')">🇺🇸 English</a>
+<a href="#" onclick="setLanguage('sq')">🇦🇱 Shqip</a></div>
 </li>
-
-
 </li>
 <li id="admin-nav" style="display: none;"><a data-en="Admin Panel" data-mk="Админ Панел" id="admin-link" onclick="showSection('admin')">Admin Panel</a></li>
 <li id="logout-nav" style="display: none;"><a data-en="Logout" data-mk="Одјава" href="#" onclick="logout()">Logout</a></li>
@@ -597,13 +597,13 @@ main > section:not(.active) {
 <main>
 <section class="hero-section active" id="home">
 <div class="hero-content">
-<h1 data-en="Creating Opportunities for Youth" data-mk="Креираме можности за младите">Creating Opportunities for Youth</h1>
+<h1 data-en="Creating Opportunities for Youth" data-mk="Креираме можности за младите" data-sq="Krijojmë Mundësi për të Rinj">Creating Opportunities for Youth</h1>
 <p class="hero-text" data-en="ASKINA Foundation connects underprivileged students with job opportunities, scholarships, and safe housing through partnerships with local businesses and organizations." data-mk="Фондацијата АСКИНА ги поврзува социјално ранливите студенти со работни можности, стипендии и безбедно сместување преку партнерства со локални бизниси и организации.">
       ASKINA Foundation connects underprivileged students with job opportunities, scholarships, and safe housing through partnerships with local businesses and organizations.
     </p>
 <div class="hero-cta">
-<button class="button" data-en="Find Job" data-mk="Пронајди работа"><i class="fas fa-briefcase"></i> Find Job</button>
-<button class="button" data-en="Support Us" data-mk="Поддржи нè" onclick="showSection('donate')"><i class="fas fa-heart"></i> Support Us</button>
+<button class="button" data-en="Find Job" data-mk="Најди работа" data-sq="Gjej Punë">Find Job</button>
+<button class="button" data-en="Support Us" data-mk="Поддржи не" data-sq="Na Mbështet" onclick="showSection('donate')">Support Us</button>
 </div>
 <br/>
 <div class="hero-image">
@@ -612,9 +612,9 @@ main > section:not(.active) {
 </div>
 </section>
 <section id="about"><div class="about-container">
-<h2 data-en="Our Mission" data-mk="Нашата мисија" style="text-align: center; font-size: 2.2em; color: #b02a37;">Our Mission</h2>
+<h2 data-en="Our Mission" data-mk="Нашата Мисија" data-sq="Misioni Ynë" style="text-align: center; font-size: 2.2em; color: #b02a37;">Our Mission</h2>
 <p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px; text-align: justify;">
-      At <strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА">ASKINA Foundation</strong>, we believe every child deserves a chance—regardless of their background.
+      At <strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА" data-sq="Fondacioni ASKINA">ASKINA Foundation</strong>, we believe every child deserves a chance—regardless of their background.
       Our mission is rooted in <strong>compassion</strong>, <strong>equity</strong>, and the unwavering belief that opportunity should never be a privilege, but a right.
       <br/><br/>
       We are dedicated to supporting children and young people from socially vulnerable families by opening doors they never thought possible.
@@ -628,7 +628,7 @@ main > section:not(.active) {
 <em>This is not charity. This is justice. And we are committed to making it real, one young life at a time.</em>
 </p>
 <div class="about-askina-values">
-<h2 data-en="What does ASKINA stand for?" data-mk="Што значи АСКИНА?" style="text-align: center; margin-top: 0;">What does ASKINA stand for?</h2>
+<h2 data-en="What does ASKINA stand for?" data-mk="Што претставува АСКИНА?" data-sq="Çfarë përfaqëson ASKINA?" style="text-align: center; margin-top: 0;">What does ASKINA stand for?</h2>
 <div style="display: flex; flex-direction: column; gap: 15px; max-width: 700px; margin: auto; font-size: 1.05em;">
 <p><strong><i class="fas fa-arrow-right"></i> A</strong> – <strong>Access to Opportunities</strong><br/>We provide access to education, jobs, and housing for underprivileged youth.</p>
 <p><strong><i class="fas fa-arrow-right"></i> S</strong> – <strong>Support for Students</strong><br/>Continuous support to help students reach their full potential.</p>
@@ -638,48 +638,46 @@ main > section:not(.active) {
 <p data-en="We turn ideas into action, transforming lives and creating brighter futures." data-mk="Идеите ги претвораме во дела, менувајќи животи и создавајќи посветла иднина."><strong><i class="fas fa-arrow-right"></i> A</strong> – <strong>Action for a Better Future</strong><br/>We turn ideas into action, transforming lives and creating brighter futures.</p>
 </div>
 </div>
-<p data-en="We turn ideas into action, transforming lives and creating brighter futures." data-mk="Идеите ги претвораме во дела, менувајќи животи и создавајќи посветла иднина." style="text-align: center; margin-top: 30px; font-style: italic; font-size: 1.1em;">
-      We turn ideas into action, transforming lives and creating brighter futures.
-    </p>
+<p data-en="We turn ideas into action, transforming lives and creating brighter futures." data-mk="Ги претвораме идеите во акција, трансформираме животи и создаваме посветла иднина." data-sq="Ne i kthejmë idetë në veprime, ndryshojmë jetë dhe krijojmë të ardhme më të ndritura." style="text-align: center; margin-top: 30px; font-style: italic; font-size: 1.1em;">We turn ideas into action, transforming lives and creating brighter futures.</p>
 </div>
 </section>
 <section id="jobs"><h2 data-en="Job Board" data-mk="Работни понуди">Job Board</h2><div class="job-card">Jobs loading...</div></section>
 <section id="post-job">
-<h2 data-en="Post a Job Opportunity" data-mk="Објави работна понуда">Post a Job Opportunity</h2>
+<h2 data-en="Post a Job Opportunity" data-mk="Објави работна понуда" data-sq="Posto një Mundësi Pune">Post a Job Opportunity</h2>
 <form id="job-post-form">
-<label data-en="Job Title*" data-mk="Назив на работата*" for="job-title">Job Title*</label>
+<label data-en="Job Title*" data-mk="Наслов на работа*" data-sq="Titulli i Punës*" for="job-title">Job Title*</label>
 <input id="job-title" name="job-title" required="" type="text"/>
-<label data-en="Company Name*" data-mk="Име на компанијата*" for="job-company">Company Name*</label>
+<label data-en="Company Name*" data-mk="Име на компанија*" data-sq="Emri i Kompanisë*" for="job-company">Company Name*</label>
 <input id="job-company" name="job-company" required="" type="text"/>
-<label data-en="Job Type*" data-mk="Тип на работа*" for="job-type">Job Type*</label>
+<label data-en="Job Type*" data-mk="Тип на работа*" data-sq="Lloji i Punës*" for="job-type">Job Type*</label>
 <select id="job-type" name="job-type" required="">
-<option data-en="Select type" data-mk="Избери тип" value="">Select type</option>
-<option data-en="Full-time" data-mk="Полно работно време" value="full-time">Full-time</option>
-<option data-en="Part-time" data-mk="Скратено работно време" value="part-time">Part-time</option>
-<option data-en="Internship" data-mk="Практикантска работа" value="internship">Internship</option>
+<option data-en="Select type" data-mk="Избери тип" data-sq="Zgjidh Llojin" value="">Select type</option>
+<option data-en="Full-time" data-mk="Полно работно време" data-sq="Kohë e Plotë" value="full-time">Full-time</option>
+<option data-en="Part-time" data-mk="Скратено работно време" data-sq="Kohë e Pjesëshme" value="part-time">Part-time</option>
+<option data-en="Internship" data-mk="Практикантство" data-sq="Praktikë" value="internship">Internship</option>
 </select>
-<label data-en="Location*" data-mk="Локација*" for="job-location">Location*</label>
+<label data-en="Location*" data-mk="Локација*" data-sq="Vendndodhja*" for="job-location">Location*</label>
 <input id="job-location" name="job-location" required="" type="text"/>
-<label data-en="Job Description*" data-mk="Опис на работата*" for="job-description">Job Description*</label>
+<label data-en="Job Description*" data-mk="Опис на работа*" data-sq="Përshkrimi i Punës*" for="job-description">Job Description*</label>
 <textarea id="job-description" name="job-description" required=""></textarea>
-<label data-en="Contact Email*" data-mk="Контакт е-пошта*" for="job-contact">Contact Email*</label>
+<label data-en="Contact Email*" data-mk="Контакт Е-пошта*" data-sq="Email Kontakti*" for="job-contact">Contact Email*</label>
 <input id="job-contact" name="job-contact" type="hidden" value="info@askina.org"/>
-<button class="button" data-en="Submit Job" data-mk="Поднеси работа" type="submit">Submit Job</button>
+<button class="button" data-en="Submit Job" data-mk="Испрати оглас" data-sq="Dërgo Punën" type="submit">Submit Job</button>
 </form>
 </section>
 <section id="apply-form-section" style="display: none;">
-<h2 data-en="Apply for Job" data-mk="Аплицирај за работа">Apply for Job</h2>
+<h2 data-en="Apply for Job" data-mk="Аплицирај за работа" data-sq="Apliko për Punë">Apply for Job</h2>
 <form action="/api/apply-job" enctype="multipart/form-data" id="apply-form" method="POST">
 <input id="job-title-hidden" name="jobTitle" type="hidden"/>
-<label data-en="Full Name*" data-mk="Име и презиме*">Full Name*</label>
+<label data-en="Full Name*" data-mk="Име и Презиме*" data-sq="Emri dhe Mbiemri*">Full Name*</label>
 <input name="name" required="" type="text"/>
 <label data-en="Email*" data-mk="Е-пошта*">Email*</label>
 <input name="email" required="" type="email"/>
 <label data-en="Message" data-mk="Порака">Message</label>
 <textarea name="message"></textarea>
-<label data-en="Attach CV (PDF/DOC)" data-mk="Прикачи биографија (PDF/DOC)">Attach CV (PDF/DOC)</label>
+<label data-en="Attach CV (PDF/DOC)" data-mk="Прикачи CV (PDF/DOC)" data-sq="Bashkangjit CV (PDF/DOC)">Attach CV (PDF/DOC)</label>
 <input name="cv" required="" type="file"/>
-<button class="button" data-en="Send Application" data-mk="Испрати апликација" type="submit">Send Application</button>
+<button class="button" data-en="Send Application" data-mk="Испрати Апликација" data-sq="Dërgo Aplikimin" type="submit">Send Application</button>
 </form>
 </section>
 <section class="fade" id="partners">
@@ -687,7 +685,7 @@ main > section:not(.active) {
 <h2 data-en="Strategic Partnership: Diab-Reg" data-mk="Стратешко партнерство: Diab-Reg">Strategic Partnership: Diab-Reg</h2>
 <img alt="Diab-Reg Logo" src="logo1.jpg" style="width: 160px; max-width: 100%; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"/>
 <p style="font-size: 1.1em; line-height: 1.7; text-align: justify;">
-<strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА">ASKINA Foundation</strong> is proud to maintain a strong and ongoing collaboration with <a data-en="Diab-Reg" data-mk="Диаб-Рег" href="https://diab-reg.software/mk" style="color: var(--primary); font-weight: 600;" target="_blank">Diab-Reg</a> — an innovative digital solution for managing standardized product certifications specifically tailored for the needs of people living with diabetes.
+<strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА" data-sq="Fondacioni ASKINA">ASKINA Foundation</strong> is proud to maintain a strong and ongoing collaboration with <a data-en="Diab-Reg" data-mk="Диаб-Рег" href="https://diab-reg.software/mk" style="color: var(--primary); font-weight: 600;" target="_blank">Diab-Reg</a> — an innovative digital solution for managing standardized product certifications specifically tailored for the needs of people living with diabetes.
     </p>
 <p style="font-size: 1.1em; line-height: 1.7; text-align: justify;">
       Through this partnership, several ASKINA members are already <strong>honorarily engaged</strong> with Diab-Reg in roles ranging from technical consultancy to community outreach and certification processes. Together, we are helping build a more reliable and trusted ecosystem for diabetes-related products in the Macedonian market.
@@ -700,7 +698,7 @@ main > section:not(.active) {
 <section id="scholarships">
 <h2 data-en="Scholarships" data-mk="Стипендии">Scholarships</h2>
 <p>
-    Education should never be a luxury—it should be a promise. At <strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА">ASKINA Foundation</strong>, we are turning that promise into reality for young people who need it the most.
+    Education should never be a luxury—it should be a promise. At <strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА" data-sq="Fondacioni ASKINA">ASKINA Foundation</strong>, we are turning that promise into reality for young people who need it the most.
   </p>
 <p data-en="Our scholarship program is designed to uplift students from socially vulnerable backgrounds by removing the financial barriers that stand between them and their dreams. Whether it's tuition fees, books, application costs, or transportation—our support goes beyond just financial aid. We invest in the full journey of each student." data-mk="Нашата програма за стипендии е дизајнирана да ги поддржи студентите од социјално ранливи средини со отстранување на финансиските бариери меѓу нив и нивните соништа. Без разлика дали станува збор за школарина, книги, апликациски такси или транспорт — нашата поддршка оди подалеку од финансиска помош.">
     Our scholarship program is designed to uplift students from socially vulnerable backgrounds by removing the financial barriers that stand between them and their dreams. Whether it's tuition fees, books, application costs, or transportation—our support goes beyond just financial aid. We invest in the full journey of each student.
@@ -716,15 +714,15 @@ main > section:not(.active) {
 </p>
 </section>
 <section id="contact">
-<h2 data-en="Contact Us" data-mk="Контактирајте не">Contact Us</h2>
+<h2 data-en="Contact Us" data-mk="Контактирај Не" data-sq="Na Kontaktoni">Contact Us</h2>
 <p data-en="Whether you’re a student seeking support, a company willing to offer opportunities, a donor ready to make a difference, or just someone with a kind heart and an idea—your voice matters." data-mk="Без разлика дали си студент кој бара поддршка, компанија што нуди можности, донатор кој сака да направи разлика или едноставно некој со големо срце — твојот глас е важен.">
     Whether you’re a student seeking support, a company willing to offer opportunities, a donor ready to make a difference, or just someone with a kind heart and an idea—your voice matters.
   </p>
 <p>
-    At <strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА">ASKINA Foundation</strong>, we believe in the power of connection. Reach out to us with your questions, suggestions, collaborations, or simply to say hello. Together, we can build stronger bridges for those who need them most.
+    At <strong data-en="ASKINA Foundation" data-mk="Фондација АСКИНА" data-sq="Fondacioni ASKINA">ASKINA Foundation</strong>, we believe in the power of connection. Reach out to us with your questions, suggestions, collaborations, or simply to say hello. Together, we can build stronger bridges for those who need them most.
   </p>
 <form id="contact-form">
-<label data-en="Full Name*" data-mk="Име и презиме*" for="contact-name">Full Name*</label>
+<label data-en="Full Name*" data-mk="Име и Презиме*" data-sq="Emri dhe Mbiemri*" for="contact-name">Full Name*</label>
 <input id="contact-name" name="name" placeholder="Your name" required="" type="text"/>
 <label data-en="Email Address*" data-mk="Е-пошта*" for="contact-email">Email Address*</label>
 <input id="contact-email" name="email" placeholder="Your email" required="" type="email"/>
@@ -732,36 +730,36 @@ main > section:not(.active) {
 <input id="contact-subject" name="subject" placeholder="Subject of your message" required="" type="text"/>
 <label data-en="Message*" data-mk="Порака*" for="contact-message">Message*</label>
 <textarea id="contact-message" name="message" placeholder="Write your message here..." required=""></textarea>
-<button class="button" data-en="Send Message" data-mk="Испрати порака" type="submit">Send Message</button>
+<button class="button" data-en="Send Message" data-mk="Испрати Порака" data-sq="Dërgo Mesazhin" type="submit">Send Message</button>
 </form>
 <p style="margin-top: 20px;">
     📍 Skopje, North Macedonia<br/>
-    ✉️ Email: <a data-en="info@askina.org" data-mk="info@askina.org" href="mailto:askina.org@gmail.com" style="color: var(--primary); text-decoration: underline;">info@askina.org</a><br>
+    ✉️ Email: <a data-en="info@askina.org" data-mk="info@askina.org" href="mailto:askina.org@gmail.com" style="color: var(--primary); text-decoration: underline;">info@askina.org</a><br/>
     ☎️ Phone: +389 70 123 456
-  </br></p>
+  </p>
 </section>
 <!-- Updated login section -->
 <section id="login">
-<h2 data-en="Login" data-mk="Најава">Login</h2>
+<h2 data-en="Login" data-mk="Најава" data-sq="Hyrje">Login</h2>
 <form action="/login" method="POST">
-<label data-en="Username" data-mk="Корисничко име" for="username">Username</label>
+<label data-en="Username" data-mk="Корисничко име" data-sq="Emri i përdoruesit" for="username">Username</label>
 <input id="username" name="username" required="" type="text"/>
-<label data-en="Password" data-mk="Лозинка" for="password">Password</label>
+<label data-en="Password" data-mk="Лозинка" data-sq="Fjalëkalimi" for="password">Password</label>
 <input id="password" name="password" required="" type="password"/>
-<button class="cta-button" data-en="Login" data-mk="Најава" type="submit">Login</button>
+<button class="cta-button" data-en="Login" data-mk="Најава" data-sq="Hyrje" type="submit">Login</button>
 </form>
 </section>
 <!-- Updated register section -->
 <section id="register">
-<h2 data-en="Register" data-mk="Регистрација">Register</h2>
+<h2 data-en="Register" data-mk="Регистрација" data-sq="Regjistrohu">Register</h2>
 <form action="/register" method="POST">
-<label data-en="Username" data-mk="Корисничко име" for="reg-username">Username</label>
+<label data-en="Username" data-mk="Корисничко име" data-sq="Emri i përdoruesit" for="reg-username">Username</label>
 <input id="reg-username" name="username" required="" type="text"/>
-<label data-en="Password" data-mk="Лозинка" for="reg-password">Password</label>
+<label data-en="Password" data-mk="Лозинка" data-sq="Fjalëkalimi" for="reg-password">Password</label>
 <input id="reg-password" name="password" required="" type="password"/>
 <label data-en="Email" data-mk="Е-пошта" for="reg-email">Email</label>
 <input id="reg-email" name="email" required="" type="email"/>
-<button class="cta-button" data-en="Register" data-mk="Регистрација" type="submit">Register</button>
+<button class="cta-button" data-en="Register" data-mk="Регистрација" data-sq="Regjistrohu" type="submit">Register</button>
 </form>
 </section>
 <section id="admin">
@@ -770,13 +768,13 @@ main > section:not(.active) {
 <div id="admin-content">Loading...</div>
 </section>
 <section id="donate" style="padding: 20px;">
-<h2 data-en="Donate to Support Our Students" data-mk="Донирај за поддршка на нашите студенти">Donate to Support Our Students</h2>
+<h2 data-en="Donate to Support Our Students" data-mk="Донирај за да ги поддржиш нашите студенти" data-sq="Dhuro për të Mbështetur Studentët Tanë">Donate to Support Our Students</h2>
 <form id="donation-form">
-<label data-en="Donation Amount (USD)" data-mk="Износ на донација (USD)" for="donation-amount">Donation Amount (USD)</label>
+<label data-en="Donation Amount (USD)" data-mk="Износ на донација (USD)" data-sq="Shuma e Donacionit (USD)" for="donation-amount">Donation Amount (USD)</label>
 <input id="donation-amount" name="amount" required="" type="number"/>
 <label data-en="Full Name" data-mk="Име и презиме" for="donor-name">Full Name</label>
 <input id="donor-name" name="name" required="" type="text"/>
-<label data-en="Email Address" data-mk="Е-пошта" for="donor-email">Email Address</label>
+<label data-en="Email Address" data-mk="Е-пошта" data-sq="Adresa e Email-it" for="donor-email">Email Address</label>
 <input id="donor-email" name="email" required="" type="email"/> <button class="button" data-en="Donate" data-mk="Донирај" type="submit">Donate</button><br/><br/><br/>
 <i>We will send you a details for donation to your mail. Please <b>check</b> your Inbox, or Other or Junk/Spam folder</i>
 </form>
@@ -784,7 +782,7 @@ main > section:not(.active) {
 </main>
 <!-- Banner above footer -->
 <video autoplay="autoplay" controls="False" loop="loop" muted="muted" src="public/askinapresentation.mp4" style="width: 100%; display: block;"></video><footer style="text-align:center; padding: 20px; background-color: var(--primary); color: white;">
-  We respect your privacy.<BR><i>No tracking cookies, no personal or sensitive data is stored or collected.</i><BR>© 2025 ASKINA Foundation. All rights reserved.
+  We respect your privacy.<br/><i>No tracking cookies, no personal or sensitive data is stored or collected.</i><br/>© 2025 ASKINA Foundation. All rights reserved.
 </footer>
 <div id="popup-message" style="
   position: fixed;
