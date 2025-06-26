@@ -625,7 +625,7 @@ main > section:not(.active) {
       We stand by them from their first job interview to their first day at university—
       ensuring that their dreams don’t fade because of circumstances beyond their control.
       <br/><br/>
-<em>This is not charity. This is justice. And we are committed to making it real, one young life at a time.</em><BR><BR>&nbsp  Call to president of ASKINA Foundation: +389 78 210 682<BR><I>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Call, SMS, Viber, Whatsapp</I>
+<em>This is not charity. This is justice. And we are committed to making it real, one young life at a time.</em><BR><BR>&nbsp  Contact to president of ASKINA Foundation: +389 78 210 682<BR><I>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Call, SMS, Viber, Whatsapp</I>
 </p>
 <div class="about-askina-values">
 <h2 data-en="What does ASKINA stand for?" data-mk="Што претставува АСКИНА?" data-sq="Çfarë përfaqëson ASKINA?" style="text-align: center; margin-top: 0;">What does ASKINA stand for?</h2>
@@ -660,8 +660,11 @@ main > section:not(.active) {
 <input id="job-location" name="job-location" required="" type="text"/>
 <label data-en="Job Description*" data-mk="Опис на работа*" data-sq="Përshkrimi i Punës*" for="job-description">Job Description*</label>
 <textarea id="job-description" name="job-description" required=""></textarea>
-<label data-en="Contact Email*" data-mk="Контакт Е-пошта*" data-sq="Email Kontakti*" for="job-contact">Contact Email*</label>
+<label data-en="Contact Email*" data-mk="Контакт Е-пошта*" data-sq="Email Kontakti*" for="job-contact"></label>
 <input id="job-contact" name="job-contact" type="hidden" value="info@askina.org"/>
+<label data-en="Contact Phone Number" data-mk="Контакт Телефон" data-sq="Numri i Telefonit të Kontaktit" for="job-phone">Contact Phone Number</label>
+<input id="job-phone" name="job-phone" type="text" placeholder="+389 70 123 456"/>
+
 <button class="button" data-en="Submit Job" data-mk="Испрати оглас" data-sq="Dërgo Punën" type="submit">Submit Job</button>
 </form>
 </section>
@@ -820,8 +823,11 @@ function showApplicationForm(title) {
   type: document.getElementById('job-type').value,
   location: document.getElementById('job-location').value,
   description: document.getElementById('job-description').value,
-  contact: "info@askina.org" // 🚫 hardcoded, ignore the input field
+  contact: "info@askina.org", // default, не се менува
+  phone: document.getElementById('job-phone').value // ✅ ново поле
 };
+
+
 
 document.getElementById('donation-form').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -911,9 +917,10 @@ function loadJobs() {
   <h3>${job.title}</h3>
   <p><strong>${job.company}</strong> - ${job.type} - ${job.location}</p>
   <p>${job.description}</p>
-  <p>Contact: ${job.contact}</p>
+  <p><strong>Phone:</strong> ${job.phone ? job.phone : 'Not Provided'}</p>
   <button onclick="showApplicationForm('${job.title}')">Apply</button>
 `;
+
 
         container.appendChild(card);
       });
@@ -1088,7 +1095,12 @@ function showSection(id) {
 <div id="videoPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 800px; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
 <h2 data-en="What the others say about ASKINA" data-mk="Што велат другите за АСКИНА" style="color: red; text-align: center;">What the others say about ASKINA</h2>
-<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" height="400" src="https://www.youtube.com/embed/5VciTEM6tag?autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;rel=0?autoplay=1" width="100%"></iframe>
+<iframe 
+  src="https://www.youtube-nocookie.com/embed/5VciTEM6tag?autoplay=1&modestbranding=1&controls=0&rel=0" 
+  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen 
+  width="100%" height="400">
+</iframe>
+
 <button data-en="X" data-mk="Затвори" onclick="document.getElementById('videoPopup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">X</button>
 </div>
 </div>

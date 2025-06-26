@@ -11,8 +11,10 @@ const Job = mongoose.model('Job', {
   location: String,
   description: String,
   contact: String,
+  phone: String, // ✅ додадено
   createdAt: { type: Date, default: Date.now }
 });
+
 
 const multer = require('multer');
 const nodemailer = require('nodemailer');
