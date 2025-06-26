@@ -742,15 +742,16 @@ main > section:not(.active) {
 </section>
 <!-- Updated login section -->
 <section id="login">
-<h2 data-en="Login" data-mk="Најава">Login</h2>
-<form action="/login" method="POST">
-<label data-en="Username" data-mk="Корисничко име" for="username">Username</label>
-<input id="username" name="username" required="" type="text"/>
-<label data-en="Password" data-mk="Лозинка" for="password">Password</label>
-<input id="password" name="password" required="" type="password"/>
-<button class="cta-button" data-en="Login" data-mk="Најава" type="submit">Login</button>
-</form>
+  <h2 data-en="Login" data-mk="Најава">Login</h2>
+  <form id="login-form" onsubmit="return false;">
+    <label data-en="Username" data-mk="Корисничко име" for="username">Username</label>
+    <input id="username" name="username" required type="text"/>
+    <label data-en="Password" data-mk="Лозинка" for="password">Password</label>
+    <input id="password" name="password" required type="password"/>
+    <button class="cta-button" data-en="Login" data-mk="Најава" type="submit">Login</button>
+  </form>
 </section>
+
 <!-- Updated register section -->
 <section id="register">
 <h2 data-en="Register" data-mk="Регистрација">Register</h2>
@@ -869,7 +870,9 @@ document.getElementById('donation-form').addEventListener('submit', async functi
 
   document.addEventListener('DOMContentLoaded', () => {
   loadJobs();
+  loadSectionContent(); // <-- дозволи го за сите
 });
+
 function showPopup(message, success = true) {
   const popup = document.getElementById('popup-message');
   popup.textContent = message;
@@ -962,31 +965,41 @@ function saveAllSections() {
       body: JSON.stringify({ sectionId, content })
     })
     .then(res => res.text())
-    .then(msg => console.log(`Saved ${sectionId}: ${msg}`))
-    .catch(err => console.error(`Error saving ${sectionId}:`, err));
+    .then(msg => {
+      console.log(`✅ Saved ${sectionId}: ${msg}`);
+    })
+    .catch(err => console.error(`❌ Error saving ${sectionId}:`, err));
   });
   alert("All changes saved!");
 }
 
- document.querySelector('#login form')?.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: formData.get('username'),
-        password: formData.get('password')
-      })
-    }).then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          window.location.reload(); // 🔄 reload за да се прикаже админ функционалноста
-        } else {
-          alert('Login failed!');
-        }
-      });
-  });
+
+ document.getElementById('login-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const formData = new FormData(this);
+  fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: formData.get('username'),
+      password: formData.get('password')
+    })
+  }).then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('admin-nav').style.display = 'inline-block';
+        document.getElementById('logout-nav').style.display = 'inline-block';
+        enableAdminEditing();
+        showPopup('✅ Login successful', true);
+        showSection('admin');
+      } else {
+        alert('Login failed!');
+      }
+    });
+});
+
 
 // Автоматски вчитување содржина од backend за секоја editable секција
 function loadSectionContent() {
@@ -996,6 +1009,7 @@ function loadSectionContent() {
       .then(data => {
         const section = document.getElementById(id);
         if (section && data.content) {
+          console.log(`🔄 Loading section ${id}`);
           section.innerHTML = data.content;
         }
       });
@@ -1064,23 +1078,26 @@ function showSection(id) {
   }
 }
  function logout() {
-    fetch('/logout')
-      .then(() => {
-        alert('Logged out successfully.');
-        window.location.reload(); // reload за да се тргне admin мод
-      });
-  }
+  fetch('/logout')
+    .then(() => {
+      alert('Logged out successfully.');
+      window.location.reload();
+    });
+}
+
 
   fetch('/session-status')
-    .then(res => res.json())
-    .then(data => {
-      if (data.loggedIn && data.role === 'admin') {
-        document.getElementById('admin-nav').style.display = 'inline-block';
-        document.getElementById('logout-nav').style.display = 'inline-block';
-        enableAdminEditing();
-        loadSectionContent();
-      }
-    });
+  .then(res => res.json())
+  .then(data => {
+    if (data.loggedIn && data.role === 'admin') {
+      document.getElementById('admin-nav').style.display = 'inline-block';
+      document.getElementById('logout-nav').style.display = 'inline-block';
+      enableAdminEditing();
+    }
+    loadSectionContent(); // 🔁 вчитувај секции за сите – и логирани и не-логирани
+  });
+console.log(`🧠 Saving section ${sectionId}`);
+
 
 </script>
 <div id="videoPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
