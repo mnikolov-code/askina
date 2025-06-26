@@ -515,6 +515,7 @@ main > section:not(.active) {
 }
 
 
+
   </style>
 <script>
     function setLanguage(lang) {
@@ -783,7 +784,7 @@ main > section:not(.active) {
 </main>
 <!-- Banner above footer -->
 <video autoplay="autoplay" controls="False" loop="loop" muted="muted" src="public/askinapresentation.mp4" style="width: 100%; display: block;"></video><footer style="text-align:center; padding: 20px; background-color: var(--primary); color: white;">
-  © 2025 ASKINA Foundation. All rights reserved.
+  We respect your privacy.<BR><i>No tracking cookies, no personal or sensitive data is stored or collected.</i><BR>© 2025 ASKINA Foundation. All rights reserved.
 </footer>
 <div id="popup-message" style="
   position: fixed;
@@ -837,10 +838,10 @@ document.getElementById('donation-form').addEventListener('submit', async functi
   });
 
   if (res.ok) {
-    alert('✅ Thank you! Invoice has been sent.');
+    alert('✅ Thank you! Donation documuent has been sent to your mail.');
     this.reset();
   } else {
-    alert('❌ Error sending invoice.');
+    alert('❌ Error sending donation document to your mail.');
   }
 });
 
